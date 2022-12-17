@@ -8,7 +8,6 @@ let days = [
   "Fri.",
   "Sat."
 ];
-// about city
 function cityWeather(){
 //change the city-name temp and other 
 let cityelement=document.querySelector(".city-name")
@@ -75,22 +74,17 @@ axios.get(apiUrl).then(findTemp)
 axios.get(forecastApiurl).then(findForecast)
 
 }
-
 function findCity(event){
     event.preventDefault()
     let cityEnter = document.querySelector(".city-input")
     city = cityEnter.value
     cityWeather()
 }
-
 let city =null;
-
 let seachInput = document.querySelector(".search-button")
 seachInput.addEventListener("click",findCity)
-
 // For Day and time 
 let now= new Date()
-
 function formatDate(now) {
     return `${days[now.getDay()]} ${now.getDate()}`
   }
