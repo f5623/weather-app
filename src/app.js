@@ -1,12 +1,20 @@
 let apiKey = "7386080a2f6318d17ebb9t1f5453o70f";
-
+let days = [
+  "Sun.",
+  "Mon.",
+  "Tues.",
+  "Wed.",
+  "Thurs.",
+  "Fri.",
+  "Sat."
+];
 // about city
 function cityWeather(){
 //change the city-name temp and other 
 let cityelement=document.querySelector(".city-name")
 cityelement.innerHTML= city
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`
-
+let forecastApiurl =`https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`
 function findTemp(response){
     let currentTemp = Math.round(response.data.temperature.current) 
     let tempelement = document.querySelector(".temperature")
@@ -41,7 +49,30 @@ function findTemp(response){
     celcuisElement.addEventListener("click", func2);
 
 }
+function findForecast(response){
+  let forecastForDays = response.data.daily
+  console.log(response.data.daily)
+  let forecastElment = `<div class="row">` 
+ let i=1
+  while (i<7) {
+    let forcasteDate = new Date(response.data.daily[i].time*1000)
+    
+    forecastElment = forecastElment + `<div class="col ">
+    <div class="card-header">${days[forcasteDate.getDay()]}</div>
+    <div class="card-body"><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily[i].condition.icon}.png" alt=""></div>
+    <div class="card-footer">${Math.round(response.data.daily[i].temperature.minimum)} °C  -  ${Math.round(response.data.daily[i].temperature.maximum)} °C </div>
+  </div>
+`
+i++
+  }
+  forecastElment = forecastElment + `</div>`;
+  let forecast = document.querySelector(".forecast")
+  forecast.innerHTML = forecastElment;
+
+}
+
 axios.get(apiUrl).then(findTemp)
+axios.get(forecastApiurl).then(findForecast)
 
 }
 
@@ -61,20 +92,9 @@ seachInput.addEventListener("click",findCity)
 let now= new Date()
 
 function formatDate(now) {
-    let days = [
-      "Sun.",
-      "Mon.",
-      "Tues.",
-      "Wed.",
-      "Thurs.",
-      "Fri.",
-      "Sat."
-    ];
-
     return `${days[now.getDay()]} ${now.getDate()}`
   }
 let today= document.querySelector(".day")
 today.innerHTML = `${formatDate(now)}`
 let timeNow = document.querySelector(".time")
 timeNow.innerHTML = `${now.toLocaleTimeString('en-US', {hour: '2-digit',minute: '2-digit',})}`;
-
