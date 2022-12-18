@@ -10,7 +10,6 @@
 .city-name{
     text-transform: capitalize;
     font-size: xx-large;
-    /* font-weight: 900; */
 }
 p{
     margin-bottom: 0;
