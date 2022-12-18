@@ -1,12 +1,12 @@
 let apiKey = "7386080a2f6318d17ebb9t1f5453o70f";
 let days = [
-  "Sun.",
-  "Mon.",
-  "Tues.",
-  "Wed.",
-  "Thurs.",
-  "Fri.",
-  "Sat."
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat"
 ];
 function cityWeather(){
 //change the city-name temp and other 
@@ -52,7 +52,7 @@ function findForecast(response){
     forecastElment = forecastElment + `<div class="col ">
     <div class="card-header">${days[forcasteDate.getDay()]}</div>
     <div class="card-body"><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily[i].condition.icon}.png" alt=""></div>
-    <div class="card-footer">${Math.round(response.data.daily[i].temperature.minimum)}°C  -  ${Math.round(response.data.daily[i].temperature.maximum)}°C </div>
+    <div class="card-footer">${Math.round(response.data.daily[i].temperature.minimum)}°C  \xa0  ${Math.round(response.data.daily[i].temperature.maximum)}°C </div>
   </div>
 `
 i++
@@ -76,7 +76,7 @@ seachInput.addEventListener("click",findCity)
 // For Day and time 
 let now= new Date()
 function formatDate(now) {
-    return `${days[now.getDay()]} ${now.getDate()}`
+    return `${days[now.getDay()]}. ${now.getDate()}`
   }
 let today= document.querySelector(".day")
 today.innerHTML = `${formatDate(now)}`
@@ -105,7 +105,7 @@ function initialFunction(response){
     forecastElment = forecastElment + `<div class="col ">
     <div class="card-header">${days[forcasteDate.getDay()]}</div>
     <div class="card-body"><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily[i].condition.icon}.png" alt=""></div>
-    <div class="card-footer">${Math.round(response.data.daily[i].temperature.minimum)}°C  -  ${Math.round(response.data.daily[i].temperature.maximum)}°C </div>
+    <div class="card-footer">${Math.round(response.data.daily[i].temperature.minimum)}°C  \xa0  ${Math.round(response.data.daily[i].temperature.maximum)}°C </div>
   </div>
 `
 i++
