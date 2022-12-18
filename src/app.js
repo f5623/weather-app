@@ -52,7 +52,7 @@ function findForecast(response){
     forecastElment = forecastElment + `<div class="col ">
     <div class="card-header">${days[forcasteDate.getDay()]}</div>
     <div class="card-body"><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily[i].condition.icon}.png" alt=""></div>
-    <div class="card-footer">${Math.round(response.data.daily[i].temperature.minimum)} °C  -  ${Math.round(response.data.daily[i].temperature.maximum)} °C </div>
+    <div class="card-footer">${Math.round(response.data.daily[i].temperature.minimum)}°C  -  ${Math.round(response.data.daily[i].temperature.maximum)}°C </div>
   </div>
 `
 i++
@@ -105,7 +105,7 @@ function initialFunction(response){
     forecastElment = forecastElment + `<div class="col ">
     <div class="card-header">${days[forcasteDate.getDay()]}</div>
     <div class="card-body"><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily[i].condition.icon}.png" alt=""></div>
-    <div class="card-footer">${Math.round(response.data.daily[i].temperature.minimum)} °C  -  ${Math.round(response.data.daily[i].temperature.maximum)} °C </div>
+    <div class="card-footer">${Math.round(response.data.daily[i].temperature.minimum)}°C  -  ${Math.round(response.data.daily[i].temperature.maximum)}°C </div>
   </div>
 `
 i++
